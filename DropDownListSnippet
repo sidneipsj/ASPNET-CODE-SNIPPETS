@@ -1,0 +1,41 @@
+//Controller
+[Route("criar")]
+        public ActionResult Create()
+        {
+            var categorias = _db.Categorias.ToList();
+            var model = new EditorBookViewModel
+            {
+                Nome = "",
+                ISBN = "",
+                CategoriaId = 0,
+                CategoriaOptions = new SelectList(categorias, "Id", "Nome")
+            };
+
+            return View(model);
+        }
+
+
+
+
+
+
+
+//View-Model
+[Required(ErrorMessage = "Selecione uma categoria")]
+        public int CategoriaId { get; set; }
+        public SelectList CategoriaOptions { get; set; }
+
+
+
+
+
+
+//View
+<div class="form-group">
+    @ Html.LabelFor(model => model.CategoriaId)
+    @ Html.DropDownListFor(
+                    m => m.CategoriaId,
+                    Model.CategoriaOptions,
+                    "Selecione uma opção..." ,
+                    new { htmlAttributes = new { @class = "form-control" } })
+</div>
