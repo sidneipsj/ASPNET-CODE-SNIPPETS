@@ -1,0 +1,11 @@
+No arquivo Route.config add:
+routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+mudando o nome da action
+[Route("criar")]
+ 
+
+mudando o prefixo de BookController para [RoutePrefix("livros")]
+[RoutePrefix("livros")]
+    public class BookController : Controller
+{
